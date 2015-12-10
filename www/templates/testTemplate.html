@@ -8,7 +8,7 @@
         {{ msg }}
 
         <button class="button button-block button-positive" ng-click="query()">
-            Get query
+            Get all plants from table
         </button>
 
         <br>
@@ -16,6 +16,21 @@
         <button class="button button-block button-positive" ng-click="readFile()">
             Get file
         </button>
+
+        <button class="button button-block button-positive" ng-click="createDB()">
+            init db
+        </button>
+
+
+
+        <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+                <input type="text" placeholder="Plant ID" ng-model="plantID" value="{{ plantID }}">
+            </label>
+            <button class="button button-small" ng-click="grabRecord(plantID)">
+                Get
+            </button>
+        </div>
 
     </ion-content>
 </ion-view>

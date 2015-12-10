@@ -19,23 +19,21 @@ angular.module('spis-danmark')
         '$cordovaSQLite',
         '$cordovaFile',
         'dbFileReadServices',
+        'dbServices',
         function ($scope,
                   $cordovaSQLite,
                   $cordovaFile,
-                  dbFileReadServices) {
+                  dbFileReadServices,
+                  dbServices) {
 
-            //var db = $cordovaSQLite.openDB({ name: 'spis-danmark.db' });
-
-            $scope.init = function () {
+            $scope.init = function() {
                 $scope.msg = 'hello from init func';
             };
 
-            $scope.query = function () {
-                var query = 'SELECT * FROM plants';
-                console.log('Query function is called');
-                $cordovaSQLite.execute(db, query).then(function (res){
+            $scope.query = function() {
+                dbServices.getAllRecordsForTable('plants').then(function (res){
                     if(res.rows.length > 0) {
-                        console.log("SELECTED -> " + res.rows.item(0).name + " " + res.rows.item(0).name_latin);
+                        console.log('Numbers of records in table', res.rows.length);
                     } else {
                         console.log("No results found");
                     }
@@ -44,10 +42,27 @@ angular.module('spis-danmark')
                 });
             };
 
-            $scope.readFile = function () {
+            $scope.readFile = function() {
                 dbFileReadServices.readDBFile('plants_table_data.sql').then(function (dataString){
                     console.log(dataString);
                 });
+            };
+
+            $scope.createDB = function() {
+                dbServices.initDB();
+            };
+
+            $scope.grabRecord = function(plantID) {
+              dbServices.getRecord('plants', plantID).then(function (res){
+                  if(res.rows.length > 0) {
+                      console.log('length of rows: ' + res.rows.length);
+                      console.log("SELECTED -> " + res.rows.item(0).name + " " + res.rows.item(0).name_latin + " " + res.rows.item(0).description + " " + res.rows.item(0).history);
+                  } else {
+                      console.log("No results found");
+                  }
+              }, function (err) {
+                  console.error(err);
+              });
             };
 
             $scope.init();

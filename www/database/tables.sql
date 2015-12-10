@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS plants (id integer, name text, name_latin text);
+CREATE TABLE IF NOT EXISTS plants (id integer, name text, name_latin text, description text, history text);
 CREATE TABLE IF NOT EXISTS photos (id integer, plant_id integer, photo_url text);
 CREATE TABLE IF NOT EXISTS applications (id integer, application text);
 CREATE TABLE IF NOT EXISTS plant_applications (id integer, plant_id integer, application_id integer);

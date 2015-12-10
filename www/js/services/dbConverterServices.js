@@ -10,14 +10,16 @@ angular.module('spis-danmark')
         function(){
 
             return {
-                convertStringToRows: function(tableData, numberOfColumns) {
-                    tableData = tableData.split(')');
+                convertStringToRows: function(tableData) {
+                    tableData = tableData.split('$');
 
                     for(var i = 0; i < tableData.length; i++)
                     {
-                        tableData[i] = tableData[i].replace('(', '');
                         tableData[i] = tableData[i].split(';');
                     }
+
+                    var queryString = tableData.splice(0, 1);
+                    var numberOfColumns = tableData.splice(0, 1);
 
                     var numberOfRows = tableData.length -1;
                     var allRows = new Array();
@@ -33,9 +35,11 @@ angular.module('spis-danmark')
                         allRows[i] = angular.copy(singleRow);
                     }
 
+                    allRows.splice(0, 0, queryString[0][0]);
+
                     return allRows;
                 },
-                convertDataFileToTables: function(dataFile) {
+                convertStringToTables: function(dataFile) {
                     var queryArray = new Array;
 
                     dataFile = dataFile.split(';');
