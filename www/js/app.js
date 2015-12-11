@@ -24,34 +24,13 @@ angular.module('spis-danmark', [
 
       // Check if running on mobile environment
       if (window.cordova) {
-        dbServices.openDB();
+        if(window.localStorage['db'])
+          dbServices.openDB();
+        else
+          dbServices.initDB();
       }
-
-      //db = $cordovaSQLite.openDB({ name: 'spis-danmark.db' });
-      //$cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS plants (id integer, name text, name_latin text, description text, history text, herb integer, eatable integer)');
-      //var query = 'INSERT INTO plants (id, name, name_latin, description, history, herb, eatable) VALUES (1, first_plant, first_plant_latin, description, history, 1, 1)';
-      //
-      //var queryCreateTable = 'CREATE TABLE IF NOT EXISTS plants (id integer, name text, name_latin text)';
-      //$cordovaSQLite.execute(db, queryCreateTable).then(function(res) {
-      //  console.log('created table!');
-      //}, function (err) {
-      //  console.log(err);
-      //});
-      //
-      //var query = 'INSERT INTO plants (id, name, name_latin) VALUES (?, ?, ?)';
-      //
-      //$cordovaSQLite.execute(db, query, [1, 'first plant', 'first plant latin']).then(function(res) {
-      //  console.log("INSERT ID -> " + res.insertId);
-      //}, function (err) {
-      //  console.error(err);
-      //});
-      //
-      //dbFileReadServices.readDBFile('plants_table_data.sql').then(function (dataString){
-      //  console.log(dataString);
-      //});
-
     })
   })
   .config(['$urlRouterProvider', function($urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/plant-list');
   }]);

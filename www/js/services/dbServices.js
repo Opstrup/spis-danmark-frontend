@@ -17,6 +17,37 @@ angular.module('spis-danmark')
             var tableList = ['tables.sql'];
             var dataFileList = ['photos_table_data.sql', 'plant_colors_table_data.sql', 'plants_table_data.sql'];
 
+            var createTables = function() {
+                angular.forEach(tableList, function(tableQueries) {
+                    dbFileReadServices.readDBFile(tableQueries).then(function(dataString){
+                        angular.forEach(dbConverterServices.convertStringToTables(dataString), function(query){
+                            $cordovaSQLite.execute(db, query).then(function(res) {
+                                console.log('created table!', res);
+                            }, function (err) {
+                                console.error(err);
+                            });
+                        });
+                    });
+                });
+            };
+
+            var populateTables = function() {
+                angular.forEach(dataFileList, function(dataFile) {
+                    // Run sql query here
+                    dbFileReadServices.readDBFile(dataFile).then(function(dataString){
+                        var data = dbConverterServices.convertStringToRows(dataString);
+                        var query = data.splice(0, 1)[0];
+                        angular.forEach(data, function(row){
+                            $cordovaSQLite.execute(db, query, row).then(function(res) {
+                                console.log('INSERT RECORD', res);
+                            }, function (err) {
+                                console.error(err);
+                            });
+                        });
+                    });
+                });
+            };
+
             return {
                 openDB: function() {
                     db = $cordovaSQLite.openDB({ name: 'spis-danmark.db' });
@@ -24,39 +55,14 @@ angular.module('spis-danmark')
 
                 initDB: function() {
                     this.openDB();
-
-                    // Create tables
-                    angular.forEach(tableList, function(tableQueries) {
-                        dbFileReadServices.readDBFile(tableQueries).then(function(dataString){
-                            angular.forEach(dbConverterServices.convertStringToTables(dataString), function(query){
-                                $cordovaSQLite.execute(db, query).then(function(res) {
-                                    console.log('created table!', res);
-                                }, function (err) {
-                                    console.error(err);
-                                });
-                            });
-                        });
-                    });
-
-                    // Populate tables
-                    angular.forEach(dataFileList, function(dataFile) {
-                        // Run sql query here
-                        dbFileReadServices.readDBFile(dataFile).then(function(dataString){
-                            var data = dbConverterServices.convertStringToRows(dataString);
-                            var query = data.splice(0, 1)[0];
-                            angular.forEach(data, function(row){
-                                $cordovaSQLite.execute(db, query, row).then(function(res) {
-                                    console.log('INSERT RECORD', res);
-                                }, function (err) {
-                                    console.error(err);
-                                });
-                            });
-                        });
-                    });
-
+                    createTables();
+                    populateTables();
+                    window.localStorage['db'] = true;
                 },
                 addRecord: function(table, data) {
                     // Add a record to the table
+                    /*var query = 'INSERT INTO ' + table + ' (id, plant_id, color_id) VALUES (?, ?, ?)';
+                    $cordovaSQLite.execute(db, query, data);*/
                 },
                 removeRecord: function(table, id) {
                     // Remove a record
