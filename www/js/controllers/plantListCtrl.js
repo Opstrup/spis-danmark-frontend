@@ -16,10 +16,17 @@ angular.module('spis-danmark')
 
     .controller('PlantListCtrl', [
         '$scope',
-        function ($scope) {
+        'plantFactory',
+        function (
+            $scope,
+            plantFactory) {
 
             $scope.init = function() {
 
+            };
+
+            $scope.runDB = function() {
+                $scope.plantArray = plantFactory.createPlantArray();
             };
 
             $scope.init();

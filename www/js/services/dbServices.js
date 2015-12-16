@@ -15,7 +15,7 @@ angular.module('spis-danmark')
 
             var db;
             var tableList = ['tables.sql'];
-            var dataFileList = ['photos_table_data.sql', 'plant_colors_table_data.sql', 'plants_table_data.sql'];
+            var dataFileList = ['photos_table_data.sql', 'plant_colors_table_data.sql', 'plants_table_data.sql', 'colors_table_data.sql'];
 
             var createTables = function() {
                 angular.forEach(tableList, function(tableQueries) {
@@ -71,9 +71,13 @@ angular.module('spis-danmark')
                     var query = 'SELECT * FROM ' + table + ' WHERE id = ?';
                     return $cordovaSQLite.execute(db, query, [id]);
                 },
+                getRecordsWithPlantId: function(table, id) {
+                    var query = 'SELECT * FROM ' + table + ' WHERE plant_id = ?';
+                    return $cordovaSQLite.execute(db, query, [id]);
+                },
                 getAllRecordsForTable: function(table) {
                     var query = 'SELECT * FROM ' + table;
-                    return $cordovaSQLite.execute(db, query);
+                    return $cordovaSQLite.execute(db, query, []);
                 }
             }
         }]);

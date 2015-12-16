@@ -7,73 +7,79 @@
 
 'use strict';
 
-describe('plantServices tests', function () {
+describe('Plant class tests', function () {
 
     describe('creation of plant', function () {
 
-        var UUT;
+        var UUT, plant;
 
         beforeEach(module('spis-danmark'));
 
         beforeEach(function() {
             inject(function($injector) {
-                UUT = $injector.get('plantFactory');
+                plant = $injector.get('Plant');
             });
+
+            var season = ['summer', 'winter'];
+            var application = ['herb', 'thee', 'pot'];
+            var habitat = ['farmland', 'wetland'];
+            var photo = ['PlantPictures/1/0-plant-1.jpeg', 'PlantPictures/1/1-plant-1.jpeg', 'PlantPictures/1/2-plant-1.jpeg', 'PlantPictures/1/3-plant-1.jpeg'];
+            var color = ['red', 'brown', 'green'];
+            var size = ['10', '10-25', '25-40'];
+
+            UUT = new plant(1, "test plant name", "test plant latin name", "description of plant", "history of plant", application, habitat, season, photo, color, size);
         });
 
         it('plantServices should be defined', function () {
             expect(UUT).toBeDefined();
         });
 
-        it('should return empty string if name has not been set', function () {
-            expect(UUT.getName).toEqual('');
+        it('should return id for plant when getter is called', function () {
+            expect(UUT.getID).toEqual(1);
         });
 
-        it('should return name if name has been set', function () {
-            UUT.setName = 'First plant';
-            expect(UUT.getName).toEqual('First plant');
+        it('should return name for plant when getter is called', function () {
+            expect(UUT.getName).toEqual('test plant name');
         });
 
-        it('should return empty string if latin name has not been set', function () {
-            expect(UUT.getNameLatin).toEqual('');
+        it('should return latin name for plant when getter is called', function () {
+            expect(UUT.getNameLatin).toEqual('test plant latin name');
         });
 
-        it('should return latin name if latin name has been set', function () {
-            UUT.setNameLatin = 'First plant latin';
-            expect(UUT.getNameLatin).toEqual('First plant latin');
+        it('should return description for plant when getter is called', function () {
+            expect(UUT.getDescription).toEqual('description of plant');
         });
 
-        it('should return empty string if description has not been set', function () {
-            expect(UUT.getDescription).toEqual('');
+        it('should return history for plant when getter is called', function () {
+            expect(UUT.getHistory).toEqual('history of plant');
         });
 
-        it('should return description if description has been set', function () {
-            UUT.setDescription = 'description';
-            expect(UUT.getDescription).toEqual('description');
+        it('should return application for plant when getter is called', function () {
+            expect(UUT.getApplication[0]).toEqual('herb');
         });
 
-        it('should return empty array if season has not been set', function () {
-            expect(UUT.getSeason).toEqual([]);
+        it('should return application array for plant when getter is called', function () {
+            expect(UUT.getApplication).toEqual(['herb', 'thee', 'pot']);
         });
 
-        it('should return type of array when getSeason is called', function () {
-            expect(Array.isArray(UUT.getSeason)).toEqual(true);
+        it('should return habitat array for plant when getter is called', function () {
+            expect(UUT.getHabitat).toEqual(['farmland', 'wetland']);
         });
 
-        it('should return correct season data', function () {
-            var seasonArray = ['summer', 'winter'];
-            UUT.setSeason = seasonArray;
-
-            expect(UUT.getSeason[0]).toEqual('summer');
+        it('should return season array for plant when getter is called', function () {
+            expect(UUT.getSeason).toEqual(['summer', 'winter']);
         });
 
-        it('should return the whole array', function () {
-            var seasonArray = ['summer', 'winter'];
-            UUT.setSeason = seasonArray;
+        it('should return photo array for plant when getter is called', function () {
+            expect(UUT.getPhoto).toEqual(['PlantPictures/1/0-plant-1.jpeg', 'PlantPictures/1/1-plant-1.jpeg', 'PlantPictures/1/2-plant-1.jpeg', 'PlantPictures/1/3-plant-1.jpeg']);
+        });
 
-            expect(UUT.getSeason).toEqual(seasonArray);
+        it('should return color array for plant when getter is called', function () {
+            expect(UUT.getColor).toEqual(['red', 'brown', 'green']);
+        });
+
+        it('should return size array for plant when getter is called', function () {
+            expect(UUT.getSize).toEqual(['10', '10-25', '25-40']);
         });
     });
 });
-
-
