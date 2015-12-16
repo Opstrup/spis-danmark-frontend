@@ -13,6 +13,17 @@ angular.module('spis-danmark', [
 
   .run(function($ionicPlatform, $cordovaSQLite, dbFileReadServices, dbServices) {
     $ionicPlatform.ready(function() {
+
+      // then override any default you want
+      window.plugins.nativepagetransitions.globalOptions.duration = 350;
+      window.plugins.nativepagetransitions.globalOptions.iosdelay = 250;
+      window.plugins.nativepagetransitions.globalOptions.androiddelay = 250;
+      window.plugins.nativepagetransitions.globalOptions.winphonedelay = 250;
+      window.plugins.nativepagetransitions.globalOptions.slowdownfactor = 4;
+      // these are used for slide left/right only currently
+      window.plugins.nativepagetransitions.globalOptions.fixedPixelsTop = 0;
+      window.plugins.nativepagetransitions.globalOptions.fixedPixelsBottom = 0;
+
       if (window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
@@ -31,6 +42,8 @@ angular.module('spis-danmark', [
       }
     })
   })
-  .config(['$urlRouterProvider', function($urlRouterProvider) {
-        $urlRouterProvider.otherwise('/plant-list');
+  .config(['$urlRouterProvider', '$ionicConfigProvider', function($urlRouterProvider, $ionicConfigProvider) {
+      //$ionicConfigProvider.views.transition('platform');
+      $ionicConfigProvider.views.transition('none');
+      $urlRouterProvider.otherwise('/plant-list');
   }]);

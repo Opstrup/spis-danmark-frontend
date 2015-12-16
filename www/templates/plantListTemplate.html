@@ -12,12 +12,12 @@
         <br>
 
         <ul class="list">
-            <li class="item item-avatar item-icon-right" ng-repeat="plant in plantArray">
+            <a class="item item-avatar item-icon-right" ng-repeat="plant in plantArray" ng-click="showDetailView(plant.getID)">
                 <img ng-src="img/avatar.png">
                 <h2>{{ plant.getName }}</h2>
                 <p>{{ plant.getNameLatin }}</p>
                 <i class="icon ion-ios-arrow-right"></i>
-            </li>
+            </a>
         </ul>
 
     </ion-content>

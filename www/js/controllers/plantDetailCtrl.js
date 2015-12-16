@@ -7,18 +7,19 @@ angular.module('spis-danmark')
 
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
-            .state('plantList', {
-                url: '/detail',
+            .state('plantDetail', {
+                url: '/plant-detail/:plantID',
                 templateUrl: 'templates/plantDetailTemplate.html',
                 controller: 'PlantDetailCtrl'
             });
     }])
 
     .controller('PlantDetailCtrl', [
-        '$scope',
+        '$scope', '$stateParams',
         function (
-            $scope) {
-
+            $scope,
+            $stateParams) {
+            $scope.plantid = $stateParams.plantID;
             $scope.init = function() {
 
             };
