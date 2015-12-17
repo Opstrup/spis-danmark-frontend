@@ -7,10 +7,14 @@ angular.module('spis-danmark')
 
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
-            .state('plantDetail', {
+            .state('tab.plantDetail', {
                 url: '/plant-detail',
-                templateUrl: 'templates/plantDetailTemplate.html',
-                controller: 'PlantDetailCtrl',
+                views: {
+                    'plantListTemplate' : {
+                        templateUrl: 'templates/plantDetailTemplate.html',
+                        controller: 'PlantDetailCtrl',
+                    }
+                },
                 params: {
                     data: null
                 }
@@ -34,7 +38,7 @@ angular.module('spis-danmark')
             };
 
             $scope.showPlantListView = function() {
-                navigationServices.navigate('plantList', '' ,'right');
+                navigationServices.navigate('tab.plantList', '' ,'right');
             };
 
             $scope.init();

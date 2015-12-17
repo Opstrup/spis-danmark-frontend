@@ -42,8 +42,17 @@ angular.module('spis-danmark', [
       }
     })
   })
-  .config(['$urlRouterProvider', '$ionicConfigProvider', function($urlRouterProvider, $ionicConfigProvider) {
-      //$ionicConfigProvider.views.transition('platform');
+  .config(['$urlRouterProvider', '$ionicConfigProvider', '$stateProvider', function($urlRouterProvider, $ionicConfigProvider, $stateProvider) {
+
+      /* New state for the tab view */
+      $stateProvider
+          .state('tab', {
+            url: '/tab',
+            abstract: true,
+            templateUrl: 'templates/tabs.html'
+          });
+
       $ionicConfigProvider.views.transition('none');
-      $urlRouterProvider.otherwise('/plant-list');
+      $ionicConfigProvider.tabs.position('bottom');
+      $urlRouterProvider.otherwise('/tab/plant-list');
   }]);

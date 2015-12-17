@@ -91,11 +91,14 @@ angular.module('spis-danmark')
                 },
 
                 getPlantArray: function() {
+
                     if(!window.cordova)
                         return _mockPlantArray;
 
-                    if (_plantArray.length == 0)
+                    if (_plantArray.length == 0) {
+                        dbServices.openDB();
                         _plantArray = createPlantArray();
+                    }
 
                     return _plantArray;
                 }
