@@ -8,20 +8,33 @@ angular.module('spis-danmark')
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state('plantDetail', {
-                url: '/plant-detail/:plantID',
+                url: '/plant-detail',
                 templateUrl: 'templates/plantDetailTemplate.html',
-                controller: 'PlantDetailCtrl'
+                controller: 'PlantDetailCtrl',
+                params: {
+                    data: null
+                }
             });
     }])
 
     .controller('PlantDetailCtrl', [
-        '$scope', '$stateParams',
+        '$scope',
+        'plantFactory',
+        '$stateParams',
+        'navigationServices',
         function (
-            $scope,
-            $stateParams) {
-            $scope.plantid = $stateParams.plantID;
-            $scope.init = function() {
+        $scope,
+        plantFactory,
+        $stateParams,
+        navigationServices) {
 
+            $scope.init = function() {
+                $scope.plant = plantFactory.getPlantWithID($stateParams.data);
+
+            };
+
+            $scope.showPlantListView = function() {
+                navigationServices.navigate('plantList', '' ,'right');
             };
 
             $scope.init();

@@ -6,7 +6,7 @@ angular.module('spis-danmark')
 
     .service('navigationServices', function($state) {
         //directly binding events to this context
-        this.navigate = function(view, data, direction) {
+        this.navigate = function(view, data,direction) {
             $state.go(view, data);
 
             // Checking for environment

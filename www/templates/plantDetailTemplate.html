@@ -1,11 +1,39 @@
 <ion-view view-title="Spis-danmark">
     <div class="bar bar-header bar-stable">
-        <h1 class="title">Plant Name</h1>
+        <h1 class="title">{{ plant.getName }}</h1>
     </div>
     <ion-content class="has-header" scroll="true">
 
-    <h1>View for plant id: {{ plantid }}</h1>
+    <div class="list card">
 
-    <a ng-href="#/plant-list">Back</a>
+        <div class="item item-avatar">
+            <img class="full-image" ng-src="img/avatar.png">
+            <h2>{{ plant.getName }}</h2>
+            <p>{{ plant.getNameLatin }}</p>
+        </div>
+
+        <div class="item item-body">
+            <img class="full-image" ng-src="img/avatar.png">
+
+            <b>Beskrivelse</b>
+            <p>
+                {{ plant.getDescription }}
+            </p>
+
+            <b>Historie</b>
+            <p>
+                {{ plant.getHistory }}
+            </p>
+
+        </div>
+
+        <br>
+
+        <button class="button col col-50 col-offset-25" ng-click="showPlantListView()">
+            Back
+        </button>
+
+    </div>
+
     </ion-content>
 </ion-view>

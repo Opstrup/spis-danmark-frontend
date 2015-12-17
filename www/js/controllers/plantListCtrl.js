@@ -24,41 +24,15 @@ angular.module('spis-danmark')
             navigationServices) {
 
             $scope.init = function() {
-
+                console.log('hello from list');
             };
 
             $scope.runDB = function() {
-                if (window.cordova) {
-                    $scope.plantArray = plantFactory.createPlantArray();
-                } else {
-                    $scope.plantArray = {
-                        plant0: {
-                            getID: '1',
-                            getName: 'Første plante',
-                            getNameLatin: 'Latinsk navn'
-                        },
-                        plant1: {
-                            getID: 2,
-                            getName: 'Anden plante',
-                            getNameLatin: 'Latinsk navn'
-                        },
-                        plant2: {
-                            getID: 3,
-                            getName: 'Tredje plante',
-                            getNameLatin: 'Latinsk navn'
-                        },
-                        plant3: {
-                            getID: 4,
-                            getName: 'Fjerde plante',
-                            getNameLatin: 'Latinsk navn'
-                        }
-                    };
-                }
+                $scope.plantArray = plantFactory.getPlantArray();
             };
 
-            $scope.showDetailView = function(plantID) {
-                console.log(plantID);
-                navigationServices.navigate('plantDetail', '1', 'left');
+            $scope.showPlantDetailView = function(plantID) {
+                navigationServices.navigate('plantDetail', { data:plantID },'left');
             };
 
             $scope.init();
