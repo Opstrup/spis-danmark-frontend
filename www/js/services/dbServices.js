@@ -15,7 +15,10 @@ angular.module('spis-danmark')
 
             var db;
             var tableList = ['tables.sql'];
-            var dataFileList = ['photos_table_data.sql', 'plant_colors_table_data.sql', 'plants_table_data.sql', 'colors_table_data.sql'];
+            var dataFileList = ['applications_table_data.sql' ,'colors_table_data.sql', 'habitats_table_data.sql',
+                                'photos_table_data.sql', 'plant_applications_table_data.sql','plant_colors_table_data.sql',
+                                'plant_habitats_table_data.sql' , 'plant_seasons_table_data.sql', 'plant_sizes_table_data.sql',
+                                'plants_table_data.sql', 'seasons_table_data.sql', 'sizes_table_data.sql'];
 
             var createTables = function() {
                 angular.forEach(tableList, function(tableQueries) {
