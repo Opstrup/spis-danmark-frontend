@@ -59,10 +59,9 @@ angular.module('spis-danmark')
                             var plantData = res.rows.item(i);
                             plantArray.push(createPlant(plantData));
                         }
-                        console.log(plantArray);
                     }
                 }, function (err) {
-                    console.error(err);
+                    console.error('Cannot create plant array before the table is created', err);
                 });
 
                 return plantArray;

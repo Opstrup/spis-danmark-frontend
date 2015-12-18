@@ -9,23 +9,31 @@ angular.module('spis-danmark')
         'dbFileReadServices',
         'dbConverterServices',
         '$cordovaSQLite',
+        '$q',
         function(dbFileReadServices,
                  dbConverterServices,
-                 $cordovaSQLite) {
+                 $cordovaSQLite,
+                 $q) {
 
             var db;
             var tableList = ['tables.sql'];
-            var dataFileList = ['applications_table_data.sql' ,'colors_table_data.sql', 'habitats_table_data.sql',
-                                'photos_table_data.sql', 'plant_applications_table_data.sql','plant_colors_table_data.sql',
-                                'plant_habitats_table_data.sql' , 'plant_seasons_table_data.sql', 'plant_sizes_table_data.sql',
-                                'plants_table_data.sql', 'seasons_table_data.sql', 'sizes_table_data.sql'];
+            var dataFileList = ['plants_table_data.sql', 'applications_table_data.sql' ,'colors_table_data.sql',
+                                'habitats_table_data.sql', 'photos_table_data.sql', 'plant_applications_table_data.sql',
+                                'plant_colors_table_data.sql', 'plant_habitats_table_data.sql' , 'plant_seasons_table_data.sql',
+                                'plant_sizes_table_data.sql', 'seasons_table_data.sql', 'sizes_table_data.sql'];
 
             var createTables = function() {
                 angular.forEach(tableList, function(tableQueries) {
                     dbFileReadServices.readDBFile(tableQueries).then(function(dataString){
+                        var numberOfTables = dbConverterServices.convertStringToTables(dataString).length;
+                        var count = 0;
                         angular.forEach(dbConverterServices.convertStringToTables(dataString), function(query){
                             $cordovaSQLite.execute(db, query).then(function(res) {
-                                console.log('created table!', res);
+                                console.log('created table!', res.rows);
+                                count++;
+                                if (count == numberOfTables) {
+                                    populateTables();
+                                }
                             }, function (err) {
                                 console.error(err);
                             });
@@ -33,6 +41,20 @@ angular.module('spis-danmark')
                     });
                 });
             };
+
+            /*var createTables = function() {
+                angular.forEach(tableList, function(tableQueries) {
+                    dbFileReadServices.readDBFile(tableQueries).then(function(dataString){
+                        angular.forEach(dbConverterServices.convertStringToTables(dataString), function(query){
+                            $cordovaSQLite.execute(db, query).then(function(res) {
+                                console.log('created table!', res.rows);
+                            }, function (err) {
+                                console.error(err);
+                            });
+                        });
+                    });
+                });
+            };*/
 
             var populateTables = function() {
                 angular.forEach(dataFileList, function(dataFile) {
@@ -42,9 +64,9 @@ angular.module('spis-danmark')
                         var query = data.splice(0, 1)[0];
                         angular.forEach(data, function(row){
                             $cordovaSQLite.execute(db, query, row).then(function(res) {
-                                console.log('INSERT RECORD', res);
+                                console.log('INSERT RECORD', res.rows  );
                             }, function (err) {
-                                console.error(err);
+                                console.error(err, 'cannot insert record into', query);
                             });
                         });
                     });
@@ -59,7 +81,7 @@ angular.module('spis-danmark')
                 initDB: function() {
                     this.openDB();
                     createTables();
-                    populateTables();
+                    //populateTables();
                     window.localStorage['db'] = true;
                 },
                 addRecord: function(table, data) {

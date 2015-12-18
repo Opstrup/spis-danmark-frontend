@@ -4,6 +4,13 @@
     </div>
     <ion-content class="has-header" scroll="true">
 
+        <div class="row row-center" ng-show="showSpinner">
+            <div class="installDBMsg col">
+                <p>Installere database</p>
+                <ion-spinner></ion-spinner>
+            </div>
+        </div>
+
         <ul class="list">
             <a class="item item-avatar item-icon-right" ng-repeat="plant in plantArray" ng-click="showPlantDetailView(plant.getID)">
                 <img ng-src="img/avatar.png">
