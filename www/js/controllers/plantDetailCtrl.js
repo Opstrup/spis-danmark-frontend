@@ -41,9 +41,10 @@ angular.module('spis-danmark')
                 navigationServices.navigate('tab.plantList', '' ,'right');
             };
 
-            $scope.showPlantPhotos = function() {
-                navigationServices.navigate('tab.plantList', '' ,'right');
+            $scope.showPlantPhotos = function(plantID) {
+                navigationServices.navigate('tab.plantPhoto', { data:plantID },'left');
             };
+
 
             $scope.init();
 

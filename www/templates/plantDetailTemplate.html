@@ -1,4 +1,4 @@
-<ion-view view-title="Spis-danmark">
+<ion-view view-title="{{ plant.getName }}">
     <div class="bar bar-header bar-stable">
         <h1 class="title">{{ plant.getName }}</h1>
     </div>
@@ -21,7 +21,7 @@
         <div class="item item-body">
 
             <div id="detail-photo-div">
-                <img id="detail-photo" class="full-image" ng-src="img/PlantPictures/1/0-plant-1.jpeg" ng-click="showPlantPhotos()">
+                <img id="detail-photo" class="full-image" ng-src="{{ plant.getPhoto[0] }}" ng-click="showPlantPhotos(plant.getID)">
             </div>
 
             <br>

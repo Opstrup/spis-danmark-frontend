@@ -37,6 +37,8 @@ angular.module('spis-danmark')
                     $scope.plantArray = plantFactory.getPlantArray();
                 else
                     waitForPlantsArray();
+
+                console.log($scope.plantArray);
             };
 
             $scope.loadPlants = function() {
