@@ -9,11 +9,9 @@ angular.module('spis-danmark')
         'dbFileReadServices',
         'dbConverterServices',
         '$cordovaSQLite',
-        '$q',
         function(dbFileReadServices,
                  dbConverterServices,
-                 $cordovaSQLite,
-                 $q) {
+                 $cordovaSQLite) {
 
             var db;
             var tableList = ['tables.sql'];

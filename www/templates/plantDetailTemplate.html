@@ -13,13 +13,18 @@
     <div class="list card">
 
         <div class="item item-avatar">
-            <img class="full-image" ng-src="img/avatar.png">
+            <img class="full-image" ng-src="img/PlantPictures/1/0-plant-1.jpeg">
             <h2>{{ plant.getName }}</h2>
             <p>{{ plant.getNameLatin }}</p>
         </div>
 
         <div class="item item-body">
-            <img class="full-image" ng-src="img/avatar.png">
+
+            <div id="detail-photo-div">
+                <img id="detail-photo" class="full-image" ng-src="img/PlantPictures/1/0-plant-1.jpeg" ng-click="showPlantPhotos()">
+            </div>
+
+            <br>
 
             <b>Beskrivelse</b>
             <p>

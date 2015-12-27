@@ -24,11 +24,12 @@ angular.module('spis-danmark', [
       window.plugins.nativepagetransitions.globalOptions.fixedPixelsTop = 0;
       window.plugins.nativepagetransitions.globalOptions.fixedPixelsBottom = 0;
 
-      if (window.cordova && window.cordova.plugins.Keyboard) {
+     /* if (window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
 
-      }
+      }*/
+
       if(window.StatusBar) {
         StatusBar.styleDefault();
       }
@@ -36,9 +37,15 @@ angular.module('spis-danmark', [
       // Check if running on mobile environment
       if (window.cordova) {
         if(window.localStorage['db'])
+        {
+          console.log('opening db');
           dbServices.openDB();
+        }
         else
+        {
+          console.log('init db');
           dbServices.initDB();
+        }
       }
     })
   })

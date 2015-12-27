@@ -73,16 +73,21 @@ angular.module('spis-danmark')
             var createPlantArray = function() {
                 //Create and return array of all the plants in the system.
                 var plantArray =  new Array();
-                dbServices.getAllRecordsForTable('plants').then(function (res) {
-                    if(res.rows.length > 0) {
-                        for(var i = 0; i < res.rows.length; i++) {
-                            var plantData = res.rows.item(i);
-                            plantArray.push(createPlant(plantData));
+                try {
+                    dbServices.getAllRecordsForTable('plants').then(function (res) {
+                        if(res.rows.length > 0) {
+                            for(var i = 0; i < res.rows.length; i++) {
+                                var plantData = res.rows.item(i);
+                                plantArray.push(createPlant(plantData));
+                            }
                         }
-                    }
-                }, function (err) {
-                    console.error('Cannot create plant array before the table is created', err);
-                });
+                    }, function (err) {
+                        console.error('Cannot create plant array before the table is created', err);
+                    });
+                }
+                catch(err) {
+                    console.error(err.message);
+                }
 
                 return plantArray;
             };

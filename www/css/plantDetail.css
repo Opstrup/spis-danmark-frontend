@@ -1,0 +1,10 @@
+#detail-photo-div {
+    width:100%;
+    height:200px;
+    overflow:hidden;
+    position: relative;
+}
+
+#detail-photo {
+    position: absolute;
+}
