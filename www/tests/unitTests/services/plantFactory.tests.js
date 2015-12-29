@@ -7,7 +7,7 @@
 
 'use strict';
 
-describe('Plant class tests', function () {
+describe('plant class tests', function () {
 
     describe('creation of plant', function () {
 

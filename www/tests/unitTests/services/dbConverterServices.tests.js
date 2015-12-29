@@ -4,7 +4,7 @@
 
 'use strict';
 
-fdescribe('dbConverterServices test with various database files:', function () {
+describe('dbConverterServices test', function () {
 
     describe('plants table', function () {
 

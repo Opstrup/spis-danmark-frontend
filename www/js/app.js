@@ -37,12 +37,20 @@ angular.module('spis-danmark', [
             }
 
             // Check if running on mobile environment
-            if (window.cordova) {
-                if (window.localStorage['db'])
-                    dbServices.openDB();
-                else
-                    dbServices.initDB();
-            }
+            document.addEventListener("deviceready", function() {
+                if (window.cordova) {
+                    if (window.localStorage['db'])
+                    {
+                        dbServices.openDB();
+                        console.log('opening db');
+                    }
+                    else
+                    {
+                        dbServices.initDB();
+                        console.log('init db');
+                    }
+                }
+            }, false);
         })
     })
     .config(['$urlRouterProvider', '$ionicConfigProvider', '$stateProvider', function ($urlRouterProvider, $ionicConfigProvider, $stateProvider) {

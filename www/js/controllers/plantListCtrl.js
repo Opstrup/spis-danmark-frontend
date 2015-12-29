@@ -30,7 +30,6 @@ angular.module('spis-danmark')
             $timeout) {
 
             $scope.init = function() {
-                $scope.showSpinner = false;
 
                 // Check if database already is installed
                 if(window.localStorage['db'])
