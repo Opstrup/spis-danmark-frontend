@@ -38,13 +38,10 @@ angular.module('spis-danmark')
                 else
                     waitForPlantsArray();
 
-                console.log($scope.plantArray);
             };
 
-            $scope.loadPlants = function() {
-                $scope.plantArray = plantFactory.getPlantArray();
-                console.log(window.localStorage['db']);
-                $scope.showSpinner = false;
+            $scope.showPlantDetailView = function(plantID) {
+                navigationServices.navigate('tab.plantDetail', { data:plantID },'left');
             };
 
             function waitForPlantsArray() {
@@ -56,10 +53,6 @@ angular.module('spis-danmark')
                     $scope.plantArray = plantFactory.getPlantArray();
                     $scope.showSpinner = false;
                 }, milliseconds);
-            };
-
-            $scope.showPlantDetailView = function(plantID) {
-                navigationServices.navigate('tab.plantDetail', { data:plantID },'left');
             };
 
             $scope.init();

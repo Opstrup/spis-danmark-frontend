@@ -37,7 +37,6 @@ angular.module('spis-danmark')
 
             $scope.init = function() {
                 $scope.plant = plantFactory.getPlantWithID($stateParams.data);
-                console.log($scope.plant.getPhoto);
             };
 
             $scope.navSlide = function(index) {
