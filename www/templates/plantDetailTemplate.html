@@ -27,13 +27,13 @@
             <br>
 
             <b>Beskrivelse</b>
-            <p>
-                {{ plant.getDescription }}
+            <p ng-click="showPlantDescriptionView(plant.getID)">
+                {{ shortPlantDescription }}...
             </p>
 
             <b>Historie</b>
-            <p>
-                {{ plant.getHistory }}
+            <p ng-click="showPlantHistoryView(plant.getID)">
+                {{ shortHistory }}...
             </p>
 
         </div>

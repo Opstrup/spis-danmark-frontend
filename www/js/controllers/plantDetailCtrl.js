@@ -26,15 +26,18 @@ angular.module('spis-danmark')
         'plantFactory',
         '$stateParams',
         'navigationServices',
+        'stringShorterServices',
         function (
         $scope,
         plantFactory,
         $stateParams,
-        navigationServices) {
+        navigationServices,
+        stringShorterServices) {
 
             $scope.init = function() {
                 $scope.plant = plantFactory.getPlantWithID($stateParams.data);
-
+                $scope.shortPlantDescription = stringShorterServices.shortString($scope.plant.getDescription, 20);
+                $scope.shortHistory = stringShorterServices.shortString($scope.plant.getHistory, 20);
             };
 
             $scope.showPlantListView = function() {
@@ -45,6 +48,13 @@ angular.module('spis-danmark')
                 navigationServices.navigate('tab.plantPhoto', { data:plantID },'left');
             };
 
+            $scope.showPlantDescriptionView = function(plantID) {
+                navigationServices.navigate('tab.plantDescription', { data:plantID } ,'left');
+            };
+
+            $scope.showPlantHistoryView = function(plantID) {
+                navigationServices.navigate('tab.plantHistory', { data:plantID } ,'left');
+            };
 
             $scope.init();
 
