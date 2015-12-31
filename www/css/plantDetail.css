@@ -8,3 +8,10 @@
 #detail-photo {
     position: absolute;
 }
+
+#color-circle {
+    width: 15px;
+    height: 15px;
+    background: darkgreen;
+    border-radius: 50%;
+}

@@ -9088,3 +9088,24 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+/**
+ * Created by Opstrup on 30/12/2015.
+ */
+/**
+ * Created by Opstrup on 30/12/2015.
+ */
+#detail-photo-div {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative; }
+
+#detail-photo {
+  position: absolute; }
+
+#color-circle {
+  width: 25px;
+  height: 25px;
+  background: darkgreen;
+  border-radius: 50%; }
