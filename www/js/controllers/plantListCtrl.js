@@ -10,7 +10,7 @@ angular.module('spis-danmark')
             .state('tab.plantList', {
                 url: '/plant-list',
                 views: {
-                    'plantListTemplate' : {
+                    'plantListTemplate': {
                         templateUrl: 'templates/plantListTemplate.html',
                         controller: 'PlantListCtrl'
                     }
@@ -23,24 +23,23 @@ angular.module('spis-danmark')
         'plantFactory',
         'navigationServices',
         '$timeout',
-        function (
-            $scope,
-            plantFactory,
-            navigationServices,
-            $timeout) {
+        function ($scope,
+                  plantFactory,
+                  navigationServices,
+                  $timeout) {
 
-            $scope.init = function() {
+            $scope.init = function () {
 
                 // Check if database already is installed
-                if(window.localStorage['db'])
+                if (window.localStorage['db'])
                     $scope.plantArray = plantFactory.getPlantArray();
                 else
                     waitForPlantsArray();
 
             };
 
-            $scope.showPlantDetailView = function(plantID) {
-                navigationServices.navigate('tab.plantDetail', { data:plantID },'left');
+            $scope.showPlantDetailView = function (plantID) {
+                navigationServices.navigate('tab.plantDetail', {data: plantID}, 'left');
             };
 
             function waitForPlantsArray() {
@@ -48,7 +47,7 @@ angular.module('spis-danmark')
                 // Add spinning wheel while plant list gets created
                 var milliseconds = 5000;
                 $scope.showSpinner = true;
-                $timeout(function() {
+                $timeout(function () {
                     $scope.plantArray = plantFactory.getPlantArray();
                     $scope.showSpinner = false;
                 }, milliseconds);
