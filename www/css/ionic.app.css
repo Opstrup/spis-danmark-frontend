@@ -9104,11 +9104,45 @@ a.button {
 #detail-photo {
   position: absolute; }
 
-#color-circle {
-  width: 25px;
-  height: 25px;
-  background: yellowgreen;
-  border-radius: 50%; }
+.color-circle, .red, .yellow, .blue, .black, .green, .brown, .white, .purple, .orange {
+  float: left;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black; }
+
+.red {
+  background: red; }
+
+.yellow {
+  background: yellow; }
+
+.blue {
+  background: blue; }
+
+.black {
+  background: black; }
+
+.green {
+  background: darkgreen; }
+
+.brown {
+  background: saddlebrown; }
+
+.black {
+  background: black; }
+
+.white {
+  background: white; }
+
+.purple {
+  background: purple; }
+
+.orange {
+  background: orange; }
 
 /**
  * Created by Opstrup on 03/01/2016.

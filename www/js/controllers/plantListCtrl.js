@@ -23,19 +23,23 @@ angular.module('spis-danmark')
         'plantFactory',
         'navigationServices',
         '$timeout',
+        '$ionicPlatform',
         function ($scope,
                   plantFactory,
                   navigationServices,
-                  $timeout) {
+                  $timeout,
+                  $ionicPlatform) {
 
             $scope.init = function () {
-
-                // Check if database already is installed
-                if (window.localStorage['db'])
-                    $scope.plantArray = plantFactory.getPlantArray();
-                else
+                // if !database == show spinner 5sec
+                if (!window.localStorage['db'])
                     waitForPlantsArray();
 
+                $ionicPlatform.ready(function() {
+                    // Check if database already is installed
+                    if (window.localStorage['db'])
+                        $scope.plantArray = plantFactory.getPlantArray();
+                });
             };
 
             $scope.showPlantDetailView = function (plantID) {

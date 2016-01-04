@@ -36,9 +36,11 @@
                 {{ shortHistory }}...
             </p>
 
-            <b>Farver</b>
+            <b>Kendetegn</b><br>
+
             <p>
-                <div id="color-circle" ng-repeat="color in plant.getColor"></div>
+                Farver <br>
+                <div ng-class="color" ng-repeat="color in plant.getColor"></div>
             </p>
 
         </div>

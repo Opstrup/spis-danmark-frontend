@@ -13,9 +13,63 @@
   position: absolute;
 }
 
-#color-circle {
-  width: 25px;
-  height: 25px;
-  background: yellowgreen;
+.color-circle {
+  float:left;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+  margin-right: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+.red {
+  @extend .color-circle;
+  background: red;
+}
+
+.yellow {
+  @extend .color-circle;
+  background: yellow;
+}
+
+.blue {
+  @extend .color-circle;
+  background: blue;
+}
+
+.black {
+  @extend .color-circle;
+  background: black;
+}
+
+.green {
+  @extend .color-circle;
+  background: darkgreen;
+}
+
+.brown {
+  @extend .color-circle;
+  background: saddlebrown;
+}
+
+.black {
+  @extend .color-circle;
+  background: black;
+}
+
+.white {
+  @extend .color-circle;
+  background: white;
+}
+
+.purple {
+  @extend .color-circle;
+  background: purple;
+}
+
+.orange {
+  @extend .color-circle;
+  background: orange;
 }
