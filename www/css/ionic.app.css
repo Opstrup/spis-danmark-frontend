@@ -9144,6 +9144,13 @@ a.button {
 .orange {
   background: orange; }
 
+.season-photo-wrapper {
+  overflow: hidden; }
+
+.season-photo {
+  margin-top: -260px;
+  width: 100%; }
+
 /**
  * Created by Opstrup on 03/01/2016.
  */

@@ -10,42 +10,81 @@
 
     <ion-content class="has-header" scroll="true">
 
-    <div class="list card">
+        <div class="list card">
 
-        <div class="item item-avatar">
-            <img class="full-image" ng-src="{{ plant.getPhoto[0] }}">
-            <h2>{{ plant.getName }}</h2>
-            <p>{{ plant.getNameLatin }}</p>
-        </div>
-
-        <div class="item item-body">
-
-            <div id="detail-photo-div">
-                <img id="detail-photo" class="full-image" ng-src="{{ plant.getPhoto[0] }}" ng-click="showPlantPhotos(plant.getID)">
+            <div class="item item-avatar">
+                <img class="full-image" ng-src="{{ plant.getPhoto[0] }}">
+                <h2>{{ plant.getName }}</h2>
+                <p>{{ plant.getNameLatin }}</p>
             </div>
 
-            <br>
+            <div class="item item-body">
 
-            <b>Beskrivelse</b>
-            <p ng-click="showPlantDescriptionView(plant.getID)">
-                {{ shortPlantDescription }}...
-            </p>
+                <div id="detail-photo-div">
+                    <img id="detail-photo" class="full-image" ng-src="{{ plant.getPhoto[0] }}"
+                         ng-click="showPlantPhotos(plant.getID)">
+                </div>
 
-            <b>Historie</b>
-            <p ng-click="showPlantHistoryView(plant.getID)">
-                {{ shortHistory }}...
-            </p>
+                <br>
 
-            <b>Kendetegn</b><br>
+                <b>Beskrivelse</b>
+                <div class="col">
+                    <p ng-click="showPlantDescriptionView(plant.getID)">
+                        {{ shortPlantDescription }}...
+                    </p>
+                </div>
+                <br>
 
-            <p>
-                Farver <br>
-                <div ng-class="color" ng-repeat="color in plant.getColor"></div>
-            </p>
+                <b>Historie</b>
+                <div class="col">
+                    <p ng-click="showPlantHistoryView(plant.getID)">
+                        {{ shortHistory }}...
+                    </p>
+                </div>
+                <br>
+
+                <b>Kendetegn</b>
+                <p>
+                    Farver <br>
+                <div class="col">
+                    <div ng-class="color" ng-repeat="color in plant.getColor"></div>
+                </div>
+                </p>
+
+                <br>
+
+                <p>Sæson</p>
+
+                <div class="row">
+                    <div class="col col-50">
+                        <div class="season-photo-wrapper">
+                            <img class="season-photo" ng-src="img/seasons/summer.png">
+                        </div>
+                    </div>
+
+                    <div class="col col-50">
+                        <div class="season-photo-wrapper">
+                            <img class="season-photo" ng-src="img/seasons/spring.png">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-50">
+                        <div class="season-photo-wrapper">
+                            <img class="season-photo" ng-src="img/seasons/winter.png">
+                        </div>
+                    </div>
+                    <div class="col col-50">
+                        <div class="season-photo-wrapper">
+                            <img class="season-photo" ng-src="img/seasons/autumn.png">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
-
-    </div>
 
     </ion-content>
 </ion-view>
