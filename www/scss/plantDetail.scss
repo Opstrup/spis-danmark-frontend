@@ -74,16 +74,32 @@
   background: orange;
 }
 
-.season-photo-wrapper {
+.photo-wrapper {
   overflow: hidden;
 }
 
-.season-photo {
-  margin-top: -260px;
+.season-photo-wrapper {
+  @extend .photo-wrapper;
+}
+
+.habitat-photo-wrapper {
+  @extend .photo-wrapper;
+}
+
+.crop-photo {
   width: 100%;
 }
 
-.season-photo-text {
+.season-photo {
+  @extend .crop-photo;
+  margin-top: -260px;
+}
+
+.habitat-photo {
+  @extend .crop-photo;
+}
+
+.photo-text {
   text-align: center;
   margin-top: -5px;
   color: grey;

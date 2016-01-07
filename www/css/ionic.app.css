@@ -9144,14 +9144,16 @@ a.button {
 .orange {
   background: orange; }
 
-.season-photo-wrapper {
+.photo-wrapper, .season-photo-wrapper, .habitat-photo-wrapper {
   overflow: hidden; }
 
-.season-photo {
-  margin-top: -260px;
+.crop-photo, .season-photo, .habitat-photo {
   width: 100%; }
 
-.season-photo-text {
+.season-photo {
+  margin-top: -260px; }
+
+.photo-text {
   text-align: center;
   margin-top: -5px;
   color: grey;

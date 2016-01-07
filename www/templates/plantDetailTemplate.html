@@ -60,13 +60,49 @@
                         <div class="season-photo-wrapper">
                             <img class="season-photo" ng-src="{{ seasonPhotos[plant.getSeason[$index]] }}">
                         </div>
-                        <div class="season-photo-text">{{ plant.getSeason[$index] }}</div>
+                        <div class="photo-text">{{ plant.getSeason[$index] }}</div>
                     </div>
                     <div class="col col-50" ng-if="$index + 1 <= plant.getSeason.length">
                         <div class="season-photo-wrapper">
                             <img class="season-photo" ng-src="{{ seasonPhotos[plant.getSeason[$index + 1]] }}">
                         </div>
-                        <div class="season-photo-text">{{ plant.getSeason[$index + 1] }}</div>
+                        <div class="photo-text">{{ plant.getSeason[$index + 1] }}</div>
+                    </div>
+                </div>
+
+                <p>Levested</p>
+                <div class="row">
+                    <div class="col col-25">
+                        <div class="habitat-photo-wrapper">
+                            <img class="habitat-photo" ng-src="img/habitats/farmland.png">
+                        </div>
+                        <div class="photo-text">agerland</div>
+                    </div>
+                    <div class="col col-25">
+                        <div class="habitat-photo-wrapper">
+                            <img class="habitat-photo" ng-src="img/habitats/coast.png">
+                        </div>
+                        <div class="photo-text">kyst</div>
+                    </div>
+                    <div class="col col-25">
+                        <div class="habitat-photo-wrapper">
+                            <img class="habitat-photo" ng-src="img/habitats/moor.png">
+                        </div>
+                        <div class="photo-text">hede</div>
+                    </div>
+                    <div class="col col-25">
+                        <div class="habitat-photo-wrapper">
+                            <img class="habitat-photo" ng-src="img/habitats/wetland.png">
+                        </div>
+                        <div class="photo-text">vådområde</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-25">
+                        <div class="habitat-photo-wrapper">
+                            <img class="habitat-photo" ng-src="img/habitats/forest.png">
+                        </div>
+                        <div class="photo-text">skov og hegn</div>
                     </div>
                 </div>
 
