@@ -26,7 +26,7 @@ angular.module('spis-danmark')
                     },
                     getApplication: {},
                     getHabitat: {},
-                    getSeason: {},
+                    getSeason: ['spring', 'summer'],
                     getColor: {
                         0: 'red',
                         1: 'white',
@@ -48,7 +48,7 @@ angular.module('spis-danmark')
                     },
                     getApplication: {},
                     getHabitat: {},
-                    getSeason: {},
+                    getSeason: ['spring', 'summer', 'autumn'],
                     getColor: {
                         0: 'green',
                         1: 'brown',
@@ -70,7 +70,7 @@ angular.module('spis-danmark')
                     },
                     getApplication: {},
                     getHabitat: {},
-                    getSeason: {},
+                    getSeason: ['spring', 'autumn'],
                     getColor: {
                         0: 'blue',
                         1: 'white',
@@ -93,7 +93,7 @@ angular.module('spis-danmark')
                     },
                     getApplication: {},
                     getHabitat: {},
-                    getSeason: {},
+                    getSeason: ['spring', 'summer', 'autumn', 'winter'],
                     getColor: {
                         0: 'red',
                         1: 'white',

@@ -55,30 +55,18 @@
 
                 <p>Sæson</p>
 
-                <div class="row">
-                    <div class="col col-50">
+                <div class="row" ng-repeat="season in plant.getSeason" ng-if="$index % 2 === 0">
+                    <div class="col col-50" ng-if="$index <= plant.getSeason.length">
                         <div class="season-photo-wrapper">
-                            <img class="season-photo" ng-src="img/seasons/summer.png">
+                            <img class="season-photo" ng-src="{{ seasonPhotos[plant.getSeason[$index]] }}">
                         </div>
+                        <div class="season-photo-text">{{ plant.getSeason[$index] }}</div>
                     </div>
-
-                    <div class="col col-50">
+                    <div class="col col-50" ng-if="$index + 1 <= plant.getSeason.length">
                         <div class="season-photo-wrapper">
-                            <img class="season-photo" ng-src="img/seasons/spring.png">
+                            <img class="season-photo" ng-src="{{ seasonPhotos[plant.getSeason[$index + 1]] }}">
                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col col-50">
-                        <div class="season-photo-wrapper">
-                            <img class="season-photo" ng-src="img/seasons/winter.png">
-                        </div>
-                    </div>
-                    <div class="col col-50">
-                        <div class="season-photo-wrapper">
-                            <img class="season-photo" ng-src="img/seasons/autumn.png">
-                        </div>
+                        <div class="season-photo-text">{{ plant.getSeason[$index + 1] }}</div>
                     </div>
                 </div>
 

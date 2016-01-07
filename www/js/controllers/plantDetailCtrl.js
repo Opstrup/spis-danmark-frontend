@@ -10,7 +10,7 @@ angular.module('spis-danmark')
             .state('tab.plantDetail', {
                 url: '/plant-detail',
                 views: {
-                    'plantListTemplate' : {
+                    'plantListTemplate': {
                         templateUrl: 'templates/plantDetailTemplate.html',
                         controller: 'PlantDetailCtrl',
                     }
@@ -27,33 +27,41 @@ angular.module('spis-danmark')
         '$stateParams',
         'navigationServices',
         'stringShorterServices',
-        function (
-        $scope,
-        plantFactory,
-        $stateParams,
-        navigationServices,
-        stringShorterServices) {
+        function ($scope,
+                  plantFactory,
+                  $stateParams,
+                  navigationServices,
+                  stringShorterServices) {
 
-            $scope.init = function() {
+            $scope.init = function () {
                 $scope.plant = plantFactory.getPlantWithID($stateParams.data);
                 $scope.shortPlantDescription = stringShorterServices.shortString($scope.plant.getDescription, 20);
                 $scope.shortHistory = stringShorterServices.shortString($scope.plant.getHistory, 20);
+
+                console.log($scope.plant.getSeason);
             };
 
-            $scope.showPlantListView = function() {
-                navigationServices.navigate('tab.plantList', '' ,'right');
+            $scope.seasonPhotos = {
+                spring: 'img/seasons/spring.png',
+                summer: 'img/seasons/summer.png',
+                autumn: 'img/seasons/autumn.png',
+                winter: 'img/seasons/winter.png'
             };
 
-            $scope.showPlantPhotos = function(plantID) {
-                navigationServices.navigate('tab.plantPhoto', { data:plantID },'left');
+            $scope.showPlantListView = function () {
+                navigationServices.navigate('tab.plantList', '', 'right');
             };
 
-            $scope.showPlantDescriptionView = function(plantID) {
-                navigationServices.navigate('tab.plantDescription', { data:plantID } ,'left');
+            $scope.showPlantPhotos = function (plantID) {
+                navigationServices.navigate('tab.plantPhoto', {data: plantID}, 'left');
             };
 
-            $scope.showPlantHistoryView = function(plantID) {
-                navigationServices.navigate('tab.plantHistory', { data:plantID } ,'left');
+            $scope.showPlantDescriptionView = function (plantID) {
+                navigationServices.navigate('tab.plantDescription', {data: plantID}, 'left');
+            };
+
+            $scope.showPlantHistoryView = function (plantID) {
+                navigationServices.navigate('tab.plantHistory', {data: plantID}, 'left');
             };
 
             $scope.init();
