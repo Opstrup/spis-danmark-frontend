@@ -25,7 +25,7 @@ angular.module('spis-danmark')
                         3: 'img/PlantPictures/1/3-plant-1.jpeg'
                     },
                     getApplication: {},
-                    getHabitat: {},
+                    getHabitat: ['coast', 'farmland', 'forest'],
                     getSeason: ['spring', 'summer'],
                     getColor: {
                         0: 'red',
@@ -47,7 +47,7 @@ angular.module('spis-danmark')
                         3: 'img/PlantPictures/2/3-plant-2.jpeg'
                     },
                     getApplication: {},
-                    getHabitat: {},
+                    getHabitat: ['moor', 'wetland'],
                     getSeason: ['spring', 'summer', 'autumn'],
                     getColor: {
                         0: 'green',
@@ -69,7 +69,7 @@ angular.module('spis-danmark')
                         3: 'img/PlantPictures/1/3-plant-1.jpeg'
                     },
                     getApplication: {},
-                    getHabitat: {},
+                    getHabitat: ['farmland', 'forest', 'moor'],
                     getSeason: ['spring', 'autumn'],
                     getColor: {
                         0: 'blue',
@@ -92,7 +92,7 @@ angular.module('spis-danmark')
                         3: 'img/PlantPictures/2/0-plant-2.jpeg'
                     },
                     getApplication: {},
-                    getHabitat: {},
+                    getHabitat: ['coast', 'moor', 'wetland'],
                     getSeason: ['spring', 'summer', 'autumn', 'winter'],
                     getColor: {
                         0: 'red',
@@ -140,6 +140,7 @@ angular.module('spis-danmark')
                 var sizes = new Array();
 
                 setAttribueForPlant('plant_applications', plantData.id, 'applications', applications, 'application');
+                setAttribueForPlant('plant_habitats', plantData.id, 'habitats', habitats, 'habitat');
                 setAttribueForPlant('plant_seasons', plantData.id, 'seasons', seasons, 'season');
                 setPhotosForPlant(plantData.id, photos, 'photo_url');
                 setAttribueForPlant('plant_colors', plantData.id, 'colors', colors, 'color');

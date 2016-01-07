@@ -12,10 +12,12 @@
 
         <div class="list card">
 
-            <div class="item item-avatar">
+            <div class="item item-avatar item-icon-right item-icon-right">
                 <img class="full-image" ng-src="{{ plant.getPhoto[0] }}">
                 <h2>{{ plant.getName }}</h2>
                 <p>{{ plant.getNameLatin }}</p>
+                <i class="icon ion-ios-book"></i>
+                <i class="icon ion-ios-location" style="right: 60px"></i>
             </div>
 
             <div class="item item-body">
@@ -56,54 +58,55 @@
                 <p>Sæson</p>
 
                 <div class="row" ng-repeat="season in plant.getSeason" ng-if="$index % 2 === 0">
+
                     <div class="col col-50" ng-if="$index <= plant.getSeason.length">
                         <div class="season-photo-wrapper">
                             <img class="season-photo" ng-src="{{ seasonPhotos[plant.getSeason[$index]] }}">
                         </div>
                         <div class="photo-text">{{ plant.getSeason[$index] }}</div>
                     </div>
+
                     <div class="col col-50" ng-if="$index + 1 <= plant.getSeason.length">
                         <div class="season-photo-wrapper">
                             <img class="season-photo" ng-src="{{ seasonPhotos[plant.getSeason[$index + 1]] }}">
                         </div>
                         <div class="photo-text">{{ plant.getSeason[$index + 1] }}</div>
                     </div>
+
                 </div>
 
                 <p>Levested</p>
-                <div class="row">
-                    <div class="col col-25">
+
+                <div class="row" ng-repeat="habitat in plant.getHabitat" ng-if="$index % 4 === 0">
+
+                    <div class="col col-25" ng-if="$index <= plant.getHabitat.length">
                         <div class="habitat-photo-wrapper">
-                            <img class="habitat-photo" ng-src="img/habitats/farmland.png">
+                            <img class="habitat-photo" ng-src="{{ habitatPhotos[plant.getHabitat[$index]] }}">
                         </div>
-                        <div class="photo-text">agerland</div>
+                        <div class="photo-text">{{ plant.getHabitat[$index] }}</div>
                     </div>
-                    <div class="col col-25">
+
+                    <div class="col col-25" ng-if="$index + 1 <= plant.getHabitat.length">
                         <div class="habitat-photo-wrapper">
-                            <img class="habitat-photo" ng-src="img/habitats/coast.png">
+                            <img class="habitat-photo" ng-src="{{ habitatPhotos[plant.getHabitat[$index + 1]] }}">
                         </div>
-                        <div class="photo-text">kyst</div>
+                        <div class="photo-text">{{ plant.getHabitat[$index + 1] }}</div>
                     </div>
-                    <div class="col col-25">
+
+                    <div class="col col-25" ng-if="$index + 2 <= plant.getHabitat.length">
                         <div class="habitat-photo-wrapper">
-                            <img class="habitat-photo" ng-src="img/habitats/moor.png">
+                            <img class="habitat-photo" ng-src="{{ habitatPhotos[plant.getHabitat[$index + 2]] }}">
                         </div>
-                        <div class="photo-text">hede</div>
+                        <div class="photo-text">{{ plant.getHabitat[$index + 2] }}</div>
                     </div>
-                    <div class="col col-25">
+
+                    <div class="col col-25" ng-if="$index + 3 <= plant.getHabitat.length">
                         <div class="habitat-photo-wrapper">
-                            <img class="habitat-photo" ng-src="img/habitats/wetland.png">
+                            <img class="habitat-photo" ng-src="{{ habitatPhotos[plant.getHabitat[$index + 3]] }}">
                         </div>
-                        <div class="photo-text">vådområde</div>
+                        <div class="photo-text">{{ plant.getHabitat[$index + 3] }}</div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col col-25">
-                        <div class="habitat-photo-wrapper">
-                            <img class="habitat-photo" ng-src="img/habitats/forest.png">
-                        </div>
-                        <div class="photo-text">skov og hegn</div>
-                    </div>
+
                 </div>
 
             </div>

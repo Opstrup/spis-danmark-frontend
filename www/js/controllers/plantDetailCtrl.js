@@ -37,8 +37,6 @@ angular.module('spis-danmark')
                 $scope.plant = plantFactory.getPlantWithID($stateParams.data);
                 $scope.shortPlantDescription = stringShorterServices.shortString($scope.plant.getDescription, 20);
                 $scope.shortHistory = stringShorterServices.shortString($scope.plant.getHistory, 20);
-
-                console.log($scope.plant.getSeason);
             };
 
             $scope.seasonPhotos = {
@@ -46,6 +44,14 @@ angular.module('spis-danmark')
                 summer: 'img/seasons/summer.png',
                 autumn: 'img/seasons/autumn.png',
                 winter: 'img/seasons/winter.png'
+            };
+
+            $scope.habitatPhotos = {
+                coast: 'img/habitats/coast.png',
+                farmland: 'img/habitats/farmland.png',
+                forest: 'img/habitats/forest.png',
+                moor: 'img/habitats/moor.png',
+                wetland: 'img/habitats/wetland.png'
             };
 
             $scope.showPlantListView = function () {
