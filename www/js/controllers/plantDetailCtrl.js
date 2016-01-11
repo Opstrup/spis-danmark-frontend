@@ -10,7 +10,7 @@ angular.module('spis-danmark')
             .state('tab.plantDetail', {
                 url: '/plant-detail',
                 views: {
-                    'plantListTemplate': {
+                    'tab-plantList': {
                         templateUrl: 'templates/plantDetailTemplate.html',
                         controller: 'PlantDetailCtrl',
                     }

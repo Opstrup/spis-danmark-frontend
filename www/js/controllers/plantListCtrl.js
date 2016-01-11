@@ -10,7 +10,7 @@ angular.module('spis-danmark')
             .state('tab.plantList', {
                 url: '/plant-list',
                 views: {
-                    'plantListTemplate': {
+                    'tab-plantList': {
                         templateUrl: 'templates/plantListTemplate.html',
                         controller: 'PlantListCtrl'
                     }
@@ -31,11 +31,12 @@ angular.module('spis-danmark')
                   $ionicPlatform) {
 
             $scope.init = function () {
+                console.log('Plant List Ctrl');
                 // if !database == show spinner 5sec
                 if (!window.localStorage['db'])
                     waitForPlantsArray();
 
-                $ionicPlatform.ready(function() {
+                $ionicPlatform.ready(function () {
                     // Check if database already is installed
                     if (window.localStorage['db'])
                         $scope.plantArray = plantFactory.getPlantArray();

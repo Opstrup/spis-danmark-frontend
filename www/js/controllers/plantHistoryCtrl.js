@@ -11,7 +11,7 @@ angular.module('spis-danmark')
             .state('tab.plantHistory', {
                 url: '/plant-history',
                 views: {
-                    'plantListTemplate' : {
+                    'tab-plantList' : {
                         templateUrl: 'templates/plantHistoryTemplate.html',
                         controller: 'PlantHistoryCtrl',
                     }

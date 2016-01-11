@@ -14,23 +14,22 @@ angular.module('spis-danmark', [
     .run(function ($ionicPlatform, $cordovaSQLite, dbFileReadServices, dbServices) {
         $ionicPlatform.ready(function () {
 
-            if (window.cordova) {
-                // then override any default you want
-                window.plugins.nativepagetransitions.globalOptions.duration = 350;
-                window.plugins.nativepagetransitions.globalOptions.iosdelay = 250;
-                window.plugins.nativepagetransitions.globalOptions.androiddelay = 250;
-                window.plugins.nativepagetransitions.globalOptions.winphonedelay = 250;
-                window.plugins.nativepagetransitions.globalOptions.slowdownfactor = 4;
-                // these are used for slide left/right only currently
-                window.plugins.nativepagetransitions.globalOptions.fixedPixelsTop = 0;
-                window.plugins.nativepagetransitions.globalOptions.fixedPixelsBottom = 0;
-            }
+            //if (window.cordova) {
+            //    // then override any default you want
+            //    window.plugins.nativepagetransitions.globalOptions.duration = 350;
+            //    window.plugins.nativepagetransitions.globalOptions.iosdelay = 250;
+            //    window.plugins.nativepagetransitions.globalOptions.androiddelay = 250;
+            //    window.plugins.nativepagetransitions.globalOptions.winphonedelay = 250;
+            //    window.plugins.nativepagetransitions.globalOptions.slowdownfactor = 4;
+            //    // these are used for slide left/right only currently
+            //    window.plugins.nativepagetransitions.globalOptions.fixedPixelsTop = 0;
+            //    window.plugins.nativepagetransitions.globalOptions.fixedPixelsBottom = 0;
+            //}
 
-            /* if (window.cordova && window.cordova.plugins.Keyboard) {
+             if (window.cordova && window.cordova.plugins.Keyboard) {
              cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
              cordova.plugins.Keyboard.disableScroll(true);
-
-             }*/
+             }
 
             if (window.StatusBar) {
                 StatusBar.styleDefault();
@@ -60,10 +59,12 @@ angular.module('spis-danmark', [
             .state('tab', {
                 url: '/tab',
                 abstract: true,
-                templateUrl: 'templates/tabs.html'
+                templateUrl: 'templates/tabs.html',
+                controller: 'TabCtrl'
             });
 
         $ionicConfigProvider.views.transition('none');
         $ionicConfigProvider.tabs.position('bottom');
+        $ionicConfigProvider.views.maxCache(0); /*Disabled cache for tabs views*/
         $urlRouterProvider.otherwise('/tab/plant-list');
     }]);

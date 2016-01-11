@@ -1,5 +1,5 @@
 /**
- * Created by Opstrup on 07/01/2016.
+ * Created by Opstrup on 08/01/2016.
  */
 'use strict';
 
@@ -7,23 +7,23 @@ angular.module('spis-danmark')
 
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
-            .state('tab.info', {
-                url: '/info',
+            .state('tab.recipeList', {
+                url: '/recipe-list',
                 views: {
-                    'tab-info' : {
-                        templateUrl: 'templates/infoTemplate.html',
-                        controller: 'InfoCtrl'
+                    'tab-recipeList' : {
+                        templateUrl: 'templates/recipeListTemplate.html',
+                        controller: 'RecipeListCtrl'
                     }
                 }
             });
     }])
 
-    .controller('InfoCtrl', [
+    .controller('RecipeListCtrl', [
         '$scope',
         function ($scope) {
 
             $scope.init = function() {
-                console.log('Info Ctrl');
+                console.log('Recipe List Ctrl');
             };
 
             $scope.init();

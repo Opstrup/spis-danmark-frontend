@@ -11,7 +11,7 @@ angular.module('spis-danmark')
             .state('tab.plantDescription', {
                 url: '/plant-description',
                 views: {
-                    'plantListTemplate' : {
+                    'tab-plantList' : {
                         templateUrl: 'templates/plantDescriptionTemplate.html',
                         controller: 'PlantDescriptionCtrl',
                     }
